@@ -8,7 +8,7 @@ class Match extends Model {
   declare homeTeamGoals: number;
   declare awayTeamId: number;
   declare awayTeamGoals: number;
-  declare inProgress: boolean;
+  declare inProgress: number;
 }
 
 Match.init({
@@ -39,7 +39,7 @@ Match.init({
     field: 'away_team_goals',
   },
   inProgress: {
-    type: DataTypes.BOOLEAN,
+    type: DataTypes.INTEGER,
     allowNull: false,
     field: 'in_progress',
   },
