@@ -10,7 +10,7 @@ interface IRequest {
 
 interface IResponse {
   type: null | number;
-  message: object;
+  message: string;
 }
 
 export default class AuthenticateUserUseCase {
@@ -19,25 +19,25 @@ export default class AuthenticateUserUseCase {
   execute = async ({ email, password }: IRequest): Promise<IResponse> => {
     if (!email || !password) {
       return {
-        type: 400, message: { message: 'All fields must be filled' },
+        type: 400, message: 'All fields must be filled',
       };
     }
     const user = await this.repository.findByEmail(email);
 
     if (!user) {
-      return { type: 401, message: { message: 'Incorrect email or password' } };
+      return { type: 401, message: 'Incorrect email or password' };
     }
 
     const passwordMatch = await compare(password, user.password);
 
     if (!passwordMatch) {
-      return { type: 401, message: { message: 'Incorrect email or password' } };
+      return { type: 401, message: 'Incorrect email or password' };
     }
     const payload = { id: user.id, username: user.username, email: user.email };
     const token = sign({ payload }, '992969e4cda1f8f6974c9e571d2c1507', {
       expiresIn: '300d',
     });
 
-    return { type: null, message: { token } };
+    return { type: null, message: token };
   };
 }
