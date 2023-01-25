@@ -1,5 +1,6 @@
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
+import { IUserRepository } from '../../interfaces/IUserRepository';
 import UserRepository from '../../repositories/UserRepository';
 
 interface IRequest {
@@ -13,7 +14,7 @@ interface IResponse {
 }
 
 export default class AuthenticateUserUseCase {
-  constructor(private repository = new UserRepository()) {}
+  constructor(private repository: IUserRepository = new UserRepository()) {}
 
   execute = async ({ email, password }: IRequest): Promise<IResponse> => {
     if (!email || !password) {
