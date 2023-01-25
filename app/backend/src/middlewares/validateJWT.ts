@@ -16,7 +16,7 @@ const validateJWT = async (req: Request, res: Response, next: NextFunction) => {
   }
 
   try {
-    const { payload } = verify(authorization, '992969e4cda1f8f6974c9e571d2c1507') as IPayload;
+    const { payload } = verify(authorization, 'jwt_secret') as IPayload;
     const userRepository = new UserRepository();
 
     const user = await userRepository.findById(payload.id);

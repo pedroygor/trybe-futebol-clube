@@ -34,7 +34,8 @@ export default class AuthenticateUserUseCase {
       return { type: 401, message: 'Incorrect email or password' };
     }
     const payload = { id: user.id, username: user.username, email: user.email };
-    const token = sign({ payload }, '992969e4cda1f8f6974c9e571d2c1507', {
+
+    const token = sign({ payload }, 'jwt_secret', {
       expiresIn: '300d',
     });
 
