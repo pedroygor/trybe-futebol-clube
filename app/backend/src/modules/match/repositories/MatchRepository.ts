@@ -17,4 +17,21 @@ export default class MatchRepository implements IMatchRepository {
 
     return matches;
   };
+
+  findAllMatchesInProgress = async (progress: number) => {
+    const matches = await this.repository.findAll({
+      include: [{
+        association: 'homeTeam',
+        attributes: ['teamName'],
+      }, {
+        association: 'awayTeam',
+        attributes: ['teamName'],
+      }],
+      where: {
+        inProgress: progress,
+      },
+    });
+
+    return matches;
+  };
 }
