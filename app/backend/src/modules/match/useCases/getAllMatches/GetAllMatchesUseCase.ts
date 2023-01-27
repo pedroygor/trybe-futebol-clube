@@ -1,4 +1,3 @@
-// import Match from '../../../../database/models/Match';
 import { IMatchRepository } from '../../interfaces/IMatchRepository';
 import MatchRepository from '../../repositories/MatchRepository';
 
@@ -8,9 +7,9 @@ export default class GetAllMatchesUseCase {
   execute = async (inProgress?: string) => {
     if (inProgress) {
       const progress = inProgress === 'false' ? 0 : 1;
-      const matchInProgress = this.matchRepository.findAllMatchesInProgress(progress);
+      const matches = this.matchRepository.findAllMatchesInProgress(progress);
 
-      return matchInProgress;
+      return matches;
     }
     const matches = await this.matchRepository.findAll();
 
