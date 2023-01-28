@@ -22,7 +22,7 @@ const validateJWT = async (req: Request, res: Response, next: NextFunction) => {
     const user = await userRepository.findById(payload.id);
 
     if (!user) {
-      return res.status(401).json({ message: 'token invalid' });
+      return res.status(401).json({ message: 'Token must be a valid token' });
     }
     req.headers.userId = String(user.id);
   } catch (error) {
