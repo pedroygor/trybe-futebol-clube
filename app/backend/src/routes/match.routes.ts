@@ -1,5 +1,5 @@
 import { Router } from 'express';
-// import validateJWT from '../middlewares/validateJWT';
+import validateJWT from '../middlewares/validateJWT';
 import CreateMatchController from '../modules/match/useCases/createMatch/CreateMatchController';
 import GetAllMatchesController
   from '../modules/match/useCases/getAllMatches/GetAllMatchesController';
@@ -11,6 +11,6 @@ const createMatchController = new CreateMatchController();
 
 matchRoutes.post('/matches', createMatchController.handle);
 
-matchRoutes.get('/matches', getAllMatchesController.handle);
+matchRoutes.get('/matches', validateJWT, getAllMatchesController.handle);
 
 export default matchRoutes;
