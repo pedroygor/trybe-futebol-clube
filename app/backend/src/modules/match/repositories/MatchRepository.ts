@@ -48,4 +48,8 @@ export default class MatchRepository implements IMatchRepository {
 
     return newMatch;
   };
+
+  changeInProgress = async (id: number) => {
+    await this.repository.update({ inProgress: 0 }, { where: { id } });
+  };
 }
