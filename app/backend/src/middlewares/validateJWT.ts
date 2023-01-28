@@ -24,9 +24,9 @@ const validateJWT = async (req: Request, res: Response, next: NextFunction) => {
     if (!user) {
       return res.status(401).json({ message: 'token invalid' });
     }
-    req.params.id = String(user.id);
+    req.params.userId = String(user.id);
   } catch (error) {
-    return res.status(400).json(error);
+    return res.status(401).json({ message: 'Token must be a valid token' });
   }
 
   next();

@@ -1,3 +1,4 @@
+import { ICreateMatchDTO } from '../dtos/ICreateMatchDTO';
 import Match from '../../../database/models/Match';
 import { IMatchRepository } from '../interfaces/IMatchRepository';
 
@@ -33,5 +34,18 @@ export default class MatchRepository implements IMatchRepository {
     });
 
     return matches;
+  };
+
+  createMatch = async ({
+    homeTeamId,
+    awayTeamId,
+    homeTeamGoals,
+    awayTeamGoals,
+    inProgress,
+  }: ICreateMatchDTO) => {
+    const newMatch = await this.repository
+      .create({ homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals, inProgress });
+
+    return newMatch;
   };
 }

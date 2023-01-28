@@ -8,9 +8,9 @@ export default class RoleValidateController {
   }
 
   handle = async (req: Request, res: Response) => {
-    const { id } = req.params;
+    const { userId } = req.params;
 
-    const { type, message } = await this.roleValidateUseCase.execute(Number(id));
+    const { type, message } = await this.roleValidateUseCase.execute(Number(userId));
 
     if (type) {
       return res.status(type).json({ message });
