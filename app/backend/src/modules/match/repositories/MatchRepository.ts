@@ -53,9 +53,10 @@ export default class MatchRepository implements IMatchRepository {
     await this.repository.update({ inProgress: 0 }, { where: { id } });
   };
 
-  findById = async (id: number) => {
-    const match = await this.repository.findByPk(id);
-
-    return match;
+  updateMatchGoals = async (id: number, homeTeamGoals: number, awayTeamGoals: number) => {
+    await this.repository.update(
+      { homeTeamGoals, awayTeamGoals },
+      { where: { id } },
+    );
   };
 }

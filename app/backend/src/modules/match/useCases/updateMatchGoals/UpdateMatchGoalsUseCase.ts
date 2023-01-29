@@ -11,11 +11,6 @@ export default class UpdateMatchGoalsUseCase {
   constructor(private matchRepository: IMatchRepository = new MatchRepository()) {}
 
   execute = async ({ id, homeTeamGoals, awayTeamGoals }: IRequest) => {
-    const match = await this.matchRepository.findById(id);
-    if (match) {
-      match.homeTeamGoals = homeTeamGoals;
-      match.awayTeamGoals = awayTeamGoals;
-      await match.save();
-    }
+    await this.matchRepository.updateMatchGoals(id, homeTeamGoals, awayTeamGoals);
   };
 }
