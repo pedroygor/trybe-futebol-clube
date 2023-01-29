@@ -52,4 +52,10 @@ export default class MatchRepository implements IMatchRepository {
   changeInProgress = async (id: number) => {
     await this.repository.update({ inProgress: 0 }, { where: { id } });
   };
+
+  findById = async (id: number) => {
+    const match = await this.repository.findByPk(id);
+
+    return match;
+  };
 }
