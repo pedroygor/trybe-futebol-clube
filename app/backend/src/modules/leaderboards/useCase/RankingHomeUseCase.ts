@@ -48,12 +48,7 @@ export default class RankingHomeUseCase {
           ranking.goalsFavor += match.homeTeamGoals; ranking.goalsOwn += match.awayTeamGoals;
         }); const calculo = this.calculate(ranking); return { ...ranking, ...calculo };
       }),
-    ); return result.sort((a, b) => {
-      if (b.totalVictories !== a.totalVictories) return b.totalVictories - a.totalVictories;
-      if (b.goalsBalance !== a.goalsBalance) return b.goalsBalance - a.goalsBalance;
-      if (b.goalsFavor !== a.goalsFavor) return b.goalsFavor - a.goalsFavor;
-      return a.goalsOwn - b.goalsOwn;
-    });
+    ); return this.sortResult(result);
   }
 
   initRanking = (name: string): IRanking => ({
@@ -79,4 +74,17 @@ export default class RankingHomeUseCase {
 
     return { goalsBalance, totalGames, totalPoints, efficiency };
   };
+
+  private sortResult = (result: IRanking[]) => result.sort((a, b) => {
+    if (b.totalPoints !== a.totalPoints) {
+      return b.totalPoints - a.totalPoints;
+    } if (b.totalVictories !== a.totalVictories) {
+      return b.totalVictories - a.totalVictories;
+    } if (b.goalsBalance !== a.goalsBalance) {
+      return b.goalsBalance - a.goalsBalance;
+    } if (b.goalsFavor !== a.goalsFavor) {
+      return b.goalsFavor - a.goalsFavor;
+    }
+    return a.goalsOwn - b.goalsOwn;
+  });
 }
