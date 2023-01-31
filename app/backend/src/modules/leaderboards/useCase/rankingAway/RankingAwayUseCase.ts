@@ -1,29 +1,11 @@
-import { ITeamRepository } from '../../teams/interfaces/ITeamRepository';
-import { IMatchRepository } from '../../match/interfaces/IMatchRepository';
-import MatchRepository from '../../match/repositories/MatchRepository';
-import TeamRepository from '../../teams/repositories/TeamRepository';
+import { ITeamRepository } from '../../../teams/interfaces/ITeamRepository';
+import { IMatchRepository } from '../../../match/interfaces/IMatchRepository';
+import MatchRepository from '../../../match/repositories/MatchRepository';
+import TeamRepository from '../../../teams/repositories/TeamRepository';
+import { IRanking } from '../../interfaces/IRanking';
+import { IRankingResult } from '../../interfaces/IRankingResult';
 
-interface IRanking {
-  name: string;
-  totalPoints: number;
-  totalGames: number;
-  totalVictories: number;
-  totalDraws: number;
-  totalLosses: number;
-  goalsFavor: number;
-  goalsOwn: number;
-  goalsBalance: number;
-  efficiency: string;
-}
-
-interface IRankingResult {
-  goalsBalance: number;
-  totalGames: number;
-  totalPoints: number;
-  efficiency: string;
-}
-
-export default class RankingHomeUseCase {
+export default class RankingAwayUseCase {
   private matchRepository: IMatchRepository;
   private teamRepository: ITeamRepository;
 
@@ -35,23 +17,23 @@ export default class RankingHomeUseCase {
     this.teamRepository = teamRepository;
   }
 
-  async homeRanking(): Promise<IRanking[]> {
+  awayRanking = async (): Promise<IRanking[]> => {
     const teams = await this.teamRepository.findAll();
     const result: IRanking[] = await Promise.all(
       teams.map(async (team) => {
         const ranking = this.initRanking(team.teamName);
-        const matches = await this.matchRepository.findHomeTeamMatchesFinished(team.id);
+        const matches = await this.matchRepository.findAwayTeamMatchesFinished(team.id);
         matches.forEach((match) => {
-          if (match.homeTeamGoals > match.awayTeamGoals) ranking.totalVictories += 1;
-          else if (match.homeTeamGoals < match.awayTeamGoals) ranking.totalLosses += 1;
+          if (match.homeTeamGoals < match.awayTeamGoals) ranking.totalVictories += 1;
+          else if (match.homeTeamGoals > match.awayTeamGoals) ranking.totalLosses += 1;
           else ranking.totalDraws += 1;
-          ranking.goalsFavor += match.homeTeamGoals; ranking.goalsOwn += match.awayTeamGoals;
+          ranking.goalsFavor += match.awayTeamGoals; ranking.goalsOwn += match.homeTeamGoals;
         }); const calculo = this.calculate(ranking); return { ...ranking, ...calculo };
       }),
     ); return this.sortResult(result);
-  }
+  };
 
-  initRanking = (name: string): IRanking => ({
+  private initRanking = (name: string): IRanking => ({
     name,
     totalPoints: 0,
     totalGames: 0,
