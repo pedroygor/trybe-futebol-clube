@@ -7,4 +7,6 @@ export interface IMatchRepository {
   createMatch: (match: ICreateMatchDTO) => Promise<Match>;
   changeInProgress: (id: number) => Promise<void>;
   updateMatchGoals: (id: number, homeTeamGoals: number, awayTeamGoals: number) => Promise<void>;
+  findHomeTeamMatchesFinished: (id: number) => Promise<Match[]>;
+  findAwayTeamMatchesFinished: (id: number) => Promise<Match[]>;
 }

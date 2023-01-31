@@ -59,4 +59,16 @@ export default class MatchRepository implements IMatchRepository {
       { where: { id } },
     );
   };
+
+  findHomeTeamMatchesFinished = async (id: number) => {
+    const matches = await this.repository.findAll({ where: { homeTeamId: id, inProgress: 0 } });
+
+    return matches;
+  };
+
+  findAwayTeamMatchesFinished = async (id: number) => {
+    const matches = await this.repository.findAll({ where: { awayTeamId: id, inProgress: 0 } });
+
+    return matches;
+  };
 }
