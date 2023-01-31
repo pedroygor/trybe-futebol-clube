@@ -6,6 +6,6 @@ const leaderboardsRoute = Router();
 
 const rankingHomeController = new RankingHomeController();
 
-leaderboardsRoute.get('/leaderboard', rankingHomeController.handle);
+leaderboardsRoute.get('/leaderboard/home', rankingHomeController.handle);
 
 export default leaderboardsRoute;
