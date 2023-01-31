@@ -27,10 +27,14 @@ export default class RankingAwayUseCase {
           if (match.homeTeamGoals < match.awayTeamGoals) ranking.totalVictories += 1;
           else if (match.homeTeamGoals > match.awayTeamGoals) ranking.totalLosses += 1;
           else ranking.totalDraws += 1;
-          ranking.goalsFavor += match.awayTeamGoals; ranking.goalsOwn += match.homeTeamGoals;
-        }); const calculo = this.calculate(ranking); return { ...ranking, ...calculo };
+          ranking.goalsFavor += match.awayTeamGoals;
+          ranking.goalsOwn += match.homeTeamGoals;
+        });
+        const calculo = this.calculate(ranking);
+        return { ...ranking, ...calculo };
       }),
-    ); return this.sortResult(result);
+    );
+    return this.sortResult(result);
   };
 
   private initRanking = (name: string): IRanking => ({
