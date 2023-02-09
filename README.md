@@ -43,11 +43,11 @@ $ docker-compose up --build -d
 </details>
 </br>
 
-Porta Front-End - [http://localhost:3000/](http://localhost:3000/)
+Porta Front-End - [http://localhost:3000/](http://localhost:3000/) </br>
 Porta Back-End - [http://localhost:3001/](http://localhost:3001/)
 
 ### Login
 
-***Email:*** user@user.com
+***Email:*** user@user.com </br>
 ***Senha:*** secret_user
 
