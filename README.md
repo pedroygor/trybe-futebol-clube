@@ -87,7 +87,7 @@ POST /login
 <details>
   <summary>A requisição irá falhar nos seguintes casos:</summary>
   - A rota retorna o código <code>400</code>, com a mensagem <code>All fields must be filled</code> caso o campo email não seja informado no body da requisição;<br>
-  - A rota retorna o código <code>400</code>, com a mensagem <code>All fields must be filled</code> caso o campo email não seja informado no body da requisição;<br>
+  - A rota retorna o código <code>400</code>, com a mensagem <code>All fields must be filled</code> caso o campo password não seja informado no body da requisição;<br>
   - A rota retorna o código <code>400</code>, com a mensagem <code>Incorrect email or password</code> caso o campo email seja inválido no body da requisição;<br>
   - A rota retorna o código <code>400</code>, com a mensagem <code>Incorrect email or password</code> caso o campo password seja inválido no body da requisição;<br>
 </details>
@@ -159,25 +159,14 @@ GET /teams/:id
   <summary>A resposta da requisição é a seguinte, com status 200:</summary>
 
 ```json
-[
-  {
-    "id": 1,
-    "teamName": "Avaí/Kindermann"
-  },
-  {
-    "id": 2,
-    "teamName": "Bahia"
-  },
-  {
-    "id": 3,
-    "teamName": "Botafogo"
-  },
-  // ...
-]
+{
+  "id": 1,
+  "teamName": "Avaí/Kindermann"
+}
 ```
 
 </details>
-<br>
+</br>
 
 ### Matches
 
