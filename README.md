@@ -1,4 +1,10 @@
-# Trybe Futebol Clube
+<h1 align="center">Trybe Futebol Clube</h1>
+
+<p align="center">
+  <img src="app/frontend/src/images/tfc.jpg" width="100%"/>
+</p>
+
+## Sobre o projeto
 
 O TFC é um site informativo sobre partidas e classificações de futebol!
 
