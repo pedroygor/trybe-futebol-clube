@@ -1,7 +1,7 @@
 <h1 align="center">Trybe Futebol Clube</h1>
 
 <p align="center">
-  <img src="./app/frontend/src/images/tfc.jpg" width="100%"/>
+  <img src="/app/frontend/src/images/tfc.jpg" width="100%"/>
 </p>
 
 ## Sobre o projeto
