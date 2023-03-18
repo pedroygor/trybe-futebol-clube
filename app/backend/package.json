@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "./build/server",
+  "author": "Pedro Ygor",
+  "contributors": [
+    "Trybe"
+  ],
+  "repository": "https://github.com/pedroygor/trybe-futebol-clube",
+  "engines": {
+    "node": "16.11.7"
+  },
   "scripts": {
     "build": "/bin/sh tsc_eval.sh",
     "test": "mocha -r ts-node/register ./src/tests/*$NAME*.{test,spec}.ts -t 10000 --exit",
@@ -17,7 +25,6 @@
     "lint": "eslint ./src --ext .ts"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "1.0.2",
