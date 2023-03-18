@@ -31,13 +31,13 @@ export default class CreateMatchUseCase {
     return { type: null, message: newMatch };
   };
 
-  verifyIfIdAreTheSame = (homeTeamId: number, awayTeamId: number) => {
+  private verifyIfIdAreTheSame = (homeTeamId: number, awayTeamId: number) => {
     if (homeTeamId === awayTeamId) {
       return { type: 422, message: 'It is not possible to create a match with two equal teams' };
     }
   };
 
-  verifyIfTeamExists = async (homeTeamId: number, awayTeamId: number) => {
+  private verifyIfTeamExists = async (homeTeamId: number, awayTeamId: number) => {
     const homeTeam = await this.teamRepository.findById(homeTeamId);
     const awayTeam = await this.teamRepository.findById(awayTeamId);
 
