@@ -2,6 +2,13 @@
   "name": "trybe-futebol-club",
   "version": "1.0.0",
   "description": "Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.",
+  "author": "Pedro Ygor",
+  "repository": "https://github.com/pedroygor/trybe-futebol-clube",
+  "license": "MIT",
+  "contributors": [
+    "Pedro Ygor <https://github.com/pedroygor>",
+    "Trybe <https://www.betrybe.com/>"
+  ],
   "main": "index.js",
   "scripts": {
     "postinstall": "npm run install:apps",
@@ -16,7 +23,6 @@
     "compose:down:dev": "cd app && docker-compose -f docker-compose.dev.yml down --remove-orphans",
     "logs": "cd app && docker-compose logs -f"
   },
-  "author": "Trybe",
   "devDependencies": {
     "@testing-library/jest-dom": "5.15.0",
     "@testing-library/react": "11.2.7",
