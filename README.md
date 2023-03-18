@@ -14,17 +14,25 @@ O TFC é um site informativo sobre partidas e classificações de futebol!
 
 **Back-end:** Node, Express, JWT, BcryptJS e MySQL
 
-## Funcionalidades
+## Funcionalidades do projeto
+
+### Login
 
 - Desenvolvimento de um endpoint /login que permita o acesso a partir do front-end, verificando se os dados são válidos e encriptados.
 - Verificação da existência de um email para acesso ao endpoint /login.
 - Verificação da existência de uma senha para acesso ao endpoint /login.
-- Inserir uma nova partida com times diferentes
+
+### Partidas
+
+- Inserir uma nova partida com times diferentes.
+- Inserir uma nova partida com token válido.
+- Atualizar partidas em andamento.
+
+### Classificação
+
 - Retorna as classificações dos times da casa, considerando os dados iniciais do banco de dados. Partidas em andamento não são consideradas.
 - Retorna as classificações dos times visitantes, considerando os dados iniciais do banco de dados. Partidas em andamento não são consideradas.
 - Retorna a classificação geral dos times, considerando os dados iniciais do banco de dados. Partidas em andamento não são consideradas.
-- Inserir uma nova partida com token válido
-- Atualizar partidas em andamento
 
 ## Instalação
 
