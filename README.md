@@ -38,10 +38,12 @@ $ cd trybe-futebol-clube
 # Instalando dependências Front e Back
 $ npm run postinstall
 
+# Acessar diretório da aplicação
+$ cd app
+
 # Subir o docker
 $ docker-compose up --build -d
 ```
-
 
 Porta Front-End - [http://localhost:3000](http://localhost:3000)</br>
 Porta Back-End - [http://localhost:3001](http://localhost:3001)
@@ -63,8 +65,8 @@ Porta Back-End - [http://localhost:3001](http://localhost:3001)
 POST /login
 ```
 
-| Parâmetro            | Tipo                    | Descrição                              |
-| :------------------- | :---------------------- | :------------------------------------- |
+| Parâmetro            | Tipo                    | Descrição                      |
+| :------------------- | :---------------------- | :----------------------------- |
 | `email`</br> `senha` | `string` </br> `string` | **Obrigatório:** email e senha |
 
 <details>
@@ -105,8 +107,8 @@ POST /login
 GET /login/validate
 ```
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
+| Parâmetro       | Tipo     | Descrição                                        |
+| :-------------- | :------- | :----------------------------------------------- |
 | `authorization` | `string` | **Obrigatório:** token de autenticação no header |
 
 <details>
@@ -157,9 +159,9 @@ GET /teams
 GET /teams/:id
 ```
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `id` | `string` | **Obrigatório:** O ID do time que você quer  |
+| Parâmetro | Tipo     | Descrição                                   |
+| :-------- | :------- | :------------------------------------------ |
+| `id`      | `string` | **Obrigatório:** O ID do time que você quer |
 
 <details>
   <summary>A resposta da requisição é a seguinte, com status 200:</summary>
@@ -318,9 +320,9 @@ GET /matches?inProgress=false
 POST /matches
 ```
 
-| Parâmetro   | Tipo       | Descrição                           |
-| :---------- | :--------- | :---------------------------------- |
-| `homeTeam` </br> `awayTeam` </br> `homeTeamGoals` </br> `awayTeamGoals` </br> `inProgress`| `number` </br> `number` </br> `number` </br> `number` </br> `boolean` | **Obrigatório:** Todos os campos obrigatórios </br> Adicionar ao **Header** o token de autenticação obrigatório em `authorization`   |
+| Parâmetro                                                                                  | Tipo                                                                  | Descrição                                                                                                                          |
+| :----------------------------------------------------------------------------------------- | :-------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| `homeTeam` </br> `awayTeam` </br> `homeTeamGoals` </br> `awayTeamGoals` </br> `inProgress` | `number` </br> `number` </br> `number` </br> `number` </br> `boolean` | **Obrigatório:** Todos os campos obrigatórios </br> Adicionar ao **Header** o token de autenticação obrigatório em `authorization` |
 
 
 <details>
