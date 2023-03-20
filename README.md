@@ -412,12 +412,7 @@ PATCH /matches/:id
 
 ```json
 {
-  "id": 1,
-  "homeTeam": 16,
-  "homeTeamGoals": 3,
-  "awayTeam": 8,
-  "awayTeamGoals": 1,
-  "inProgress": true,
+  "message": "success"
 }
 ```
 
