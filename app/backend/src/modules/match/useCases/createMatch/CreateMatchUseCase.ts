@@ -20,8 +20,8 @@ export default class CreateMatchUseCase {
     const response = this.verifyIfIdAreTheSame(homeTeamId, awayTeamId);
     if (response) return response;
 
-    const isTeamExists = await this.verifyIfTeamExists(homeTeamId, awayTeamId);
-    if (isTeamExists) return isTeamExists;
+    const isTeamNotExists = await this.verifyIfTeamNotExists(homeTeamId, awayTeamId);
+    if (isTeamNotExists) return isTeamNotExists;
 
     const inProgress = 1;
 
@@ -37,7 +37,7 @@ export default class CreateMatchUseCase {
     }
   };
 
-  private verifyIfTeamExists = async (homeTeamId: number, awayTeamId: number) => {
+  private verifyIfTeamNotExists = async (homeTeamId: number, awayTeamId: number) => {
     const homeTeam = await this.teamRepository.findById(homeTeamId);
     const awayTeam = await this.teamRepository.findById(awayTeamId);
 
